@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalkulator Matematik</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #cff09e;
+  }
+
+  .header {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .submenu {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .submenu a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 20px;
+    background-color: #0b486b;
+    border-radius: 5px;
+    margin: 0 10px;
+  }
+
+  .submenu a:hover {
+    background-color: #3b8686;
+  }
+
+  .calculator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+  }
+
+  .section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    margin: 10px 0;
+  }
+
+  label {
+    margin-bottom: 5px;
+  }
+
+  input, button, select {
+    margin: 5px;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+  <div class="header">
+    <h1>Kalkulator Matematik</h1>
+    <p>Selamat datang di website kalkulator matematik yang akan membantu kamu menghitung luas dan keliling bangun datar.</p>
+  </div>
+
+  <div class="submenu">
+    <a href="#" class="active">Segitiga</a>
+    <a href="#">Persegi Panjang</a>
+    <a href="#">Lingkaran</a>
+    <a href="#">Persegi</a>
+    <a href="#">Jajar Genjang</a>
+    <a href="#">Trapesium</a>
+  </div>
+
+  <div class="calculator">
+    <div class="section">
+      <h2>Menghitung Luas Segitiga</h2>
+      <img src="assets/luas_segitiga.png" alt="Rumus Luas Segitiga">
+      <label for="base">Panjang Alas:</label>
+      <input type="number" id="base" min="0" step="any">
+      <label for="height">Tinggi:</label>
+      <input type="number" id="height" min="0" step="any">
+      <label for="unit">Satuan:</label>
+      <select id="unit">
+        <option value="cm">cm</option>
+        <option value="mm">mm</option>
+        <option value="m">m</option>
+        <option value="km">km</option>
+        <option value="hm">hm</option>
+        <option value="dam">dam</option>
+        <option value="dm">dm</option>
+      </select>
+      <button onclick="calculateArea()">Hitung Luas</button>
+      <p>Luas Segitiga: <strong><span id="areaResult"></span> <span id="areaUnit"></span><sup>2</sup></strong></p>
+    </div>
+
+    <div class="section">
+      <h2>Menghitung Keliling Segitiga</h2>
+      <img src="assets/keliling_segitiga.png" alt="Rumus Keliling Segitiga">
+      <label for="sideA">Sisi A:</label>
+      <input type="number" id="sideA" min="0" step="any">
+      <label for="sideB">Sisi B:</label>
+      <input type="number" id="sideB" min="0" step="any">
+      <label for="sideC">Sisi C:</label>
+      <input type="number" id="sideC" min="0" step="any">
+      <label for="perimeterUnit">Satuan:</label>
+      <select id="perimeterUnit">
+        <option value="cm">cm</option>
+        <option value="mm">mm</option>
+        <option value="m">m</option>
+        <option value="km">km</option>
+        <option value="hm">hm</option>
+        <option value="dam">dam</option>
+        <option value="dm">dm</option>
+      </select>
+      <button onclick="calculatePerimeter()">Hitung Keliling</button>
+      <p>Keliling Segitiga: <strong><span id="perimeterResult"></span> <span id="perimeterUnit"></span></strong></p>
+    </div>
+  </div>
+
+  <script>
+    function calculateArea() {
+      const base = parseFloat(document.getElementById('base').value);
+      const height = parseFloat(document.getElementById('height').value);
+      const unit = document.getElementById('unit').value;
+
+      if (isNaN(base) || isNaN(height)) {
+        alert('Masukkan angka yang valid.');
+        return;
+      }
+
+      const area = 0.5 * base * height;
+
+      document.getElementById('areaResult').textContent = area.toFixed(2);
+      document.getElementById('areaUnit').textContent = unit;
+    }
+
+    function calculatePerimeter() {
+      const sideA = parseFloat(document.getElementById('sideA').value);
+      const sideB = parseFloat(document.getElementById('sideB').value);
+      const sideC = parseFloat(document.getElementById('sideC').value);
+      const perimeterUnit = document.getElementById('perimeterUnit').value;
+
+      if (isNaN(sideA) || isNaN(sideB) || isNaN(sideC)) {
+        alert('Masukkan angka yang valid.');
+        return;
+      }
+
+      const perimeter = sideA + sideB + sideC;
+
+      document.getElementById('perimeterResult').textContent = perimeter.toFixed(2);
+      document.getElementById('perimeterUnit').textContent = perimeterUnit;
+    }
+  </script>
+</body>
+</html>
